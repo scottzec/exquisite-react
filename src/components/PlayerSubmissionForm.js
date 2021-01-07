@@ -16,7 +16,7 @@ const PlayerSubmissionForm = (props) => {
 
   // event handlers
   const onInputChange = (event) => {
-    //console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
+    // console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newFormFields = {
       ...formFields,
     }
@@ -24,22 +24,22 @@ const PlayerSubmissionForm = (props) => {
     setFormFields(newFormFields);
   }
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  // const onFormSubmit = (event) => {
+  //   event.preventDefault();
   
-    props.addSubmissionCallback(formFields);
-    props.addSubmitForm(formFields);
-    // How do I link this between Game & Form
+  //   // props.addSubmissionCallback(formFields);
+  //   props.addSubmitForm(formFields);
+  //   // How do I link this between Game & Form
 
-    setFormFields({
-      adjective: '',
-      noun: '',
-      adverb: '',
-      verb: '',
-      adjective: '',
-      noun: '',
-    });
-  };
+  //   setFormFields({
+  //     adjective: '',
+  //     noun: '',
+  //     adverb: '',
+  //     verb: '',
+  //     adjective: '',
+  //     noun: '',
+  //   });
+  // };
 
   // // validation example
   // const emailValid = () => {
@@ -50,7 +50,7 @@ const PlayerSubmissionForm = (props) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.index}</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
+      <form className="PlayerSubmissionForm__form" onSubmit={onInputChange}>
         {/* <p> The </p> */}
         <div className="PlayerSubmissionForm__poem-inputs">
           <input
