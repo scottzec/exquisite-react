@@ -13,6 +13,14 @@ const Game = () => {
     }
   }).join(' ');
 
+const [submittedLines, setSubmittedLines] = useState()
+
+  const onSubmitForm = (submittedLine) => {
+    const newLineList = [...submittedLines, submittedLine];
+    
+    setSubmittedLines(newLineList);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +35,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} sendSubmission={onSubmitForm}/>
 
       <FinalPoem />
 
