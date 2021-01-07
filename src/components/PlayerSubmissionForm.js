@@ -10,7 +10,7 @@ const PlayerSubmissionForm = (props) => {
     noun1: '',
     adverb: '',
     verb: '',
-    adj1: '',
+    adj2: '',
     noun2: '',
   });
 
@@ -24,22 +24,28 @@ const PlayerSubmissionForm = (props) => {
     setFormFields(newFormFields);
   }
 
-  // const onFormSubmit = (event) => {
-  //   event.preventDefault();
-  
-  //   // props.addSubmissionCallback(formFields);
-  //   props.addSubmitForm(formFields);
-  //   // How do I link this between Game & Form
+  const generateFormSubmission = () => 
+    props.fields.map(field => {
+    if (typeof field === 'object') {
+      return formFields[field.key]
+    }
+    return field
+  }).join(' ');
 
-  //   setFormFields({
-  //     adjective: '',
-  //     noun: '',
-  //     adverb: '',
-  //     verb: '',
-  //     adjective: '',
-  //     noun: '',
-  //   });
-  // };
+  const onFormSubmit = (event) => {
+    event.preventDefault(); //prevents browser from submitting form
+  
+    props.sendSubmittedLine(formFields); // f lives in Game.js
+
+    setFormFields({
+      adj1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adj2: '',
+      noun2: '',
+    });
+  };
 
   // // validation example
   // const emailValid = () => {
@@ -50,7 +56,7 @@ const PlayerSubmissionForm = (props) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.index}</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit={onInputChange}>
+      <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
         {/* <p> The </p> */}
         <div className="PlayerSubmissionForm__poem-inputs">
           <input

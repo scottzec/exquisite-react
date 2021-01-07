@@ -13,9 +13,9 @@ const Game = () => {
     }
   }).join(' ');
 
-const [submittedLines, setSubmittedLines] = useState()
+  const [submittedLines, setSubmittedLines] = useState([])
 
-  const onSubmitForm = (submittedLine) => {
+  const addSubmittedLine = (submittedLine) => {
     const newLineList = [...submittedLines, submittedLine];
     
     setSubmittedLines(newLineList);
@@ -35,7 +35,7 @@ const [submittedLines, setSubmittedLines] = useState()
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS} sendSubmission={onSubmitForm}/>
+      <PlayerSubmissionForm fields={FIELDS} sendSubmittedLine={addSubmittedLine}/>
 
       <FinalPoem />
 
