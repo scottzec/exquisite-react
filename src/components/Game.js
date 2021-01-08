@@ -35,6 +35,8 @@ const Game = () => {
 
       <RecentSubmission />
 
+      {/* sendSubmittedLine is name of prop as is fields */}
+
       <PlayerSubmissionForm fields={FIELDS} sendSubmittedLine={addSubmittedLine}/>
 
       <FinalPoem />

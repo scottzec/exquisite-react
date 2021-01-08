@@ -14,9 +14,9 @@ const PlayerSubmissionForm = (props) => {
     noun2: '',
   });
 
-  // event handlers
+  // event handler
   const onInputChange = (event) => {
-    // console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
+    console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newFormFields = {
       ...formFields,
     }
@@ -24,8 +24,7 @@ const PlayerSubmissionForm = (props) => {
     setFormFields(newFormFields);
   }
 
-  const generateFormSubmission = () => 
-    props.fields.map(field => {
+  const generateFormSubmission = () => props.fields.map(field => {
     if (typeof field === 'object') {
       return formFields[field.key]
     }
@@ -35,7 +34,7 @@ const PlayerSubmissionForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault(); //prevents browser from submitting form
   
-    props.sendSubmittedLine(formFields); // f lives in Game.js
+    props.sendSubmittedLine(generateFormSubmission()); // variable for the addSubmittedLine func in Game.js
 
     setFormFields({
       adj1: '',
@@ -57,59 +56,19 @@ const PlayerSubmissionForm = (props) => {
       <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
-        {/* <p> The </p> */}
         <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="adj1"
-            value={formFields.adj1}
-            placeholder="adjective"
-            type="text"
-            onChange={onInputChange} />
-        </div>
-
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="noun1"
-            value={formFields.noun1}
-            placeholder="noun"
-            type="text"
-            onChange={onInputChange} />
-        </div>
-
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="adverb"
-            value={formFields.adverb}
-            placeholder="adverb"
-            type="text"
-            onChange={onInputChange} />
-        </div>
-
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="verb"
-            value={formFields.verb}
-            placeholder="verb"
-            type="text"
-            onChange={onInputChange} />
-        </div>
-        {/* <p> the </p> */}
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="adj2"
-            value={formFields.adj2}
-            placeholder="adjective"
-            type="text"
-            onChange={onInputChange} />
-        </div>
-
-        <div className="PlayerSubmissionForm__poem-inputs">
-          <input
-            name="noun2"
-            value={formFields.noun2}
-            placeholder="noun"
-            type="text"
-            onChange={onInputChange} />
+          props.fields.map((field, index) =>
+              return(
+              <input
+                key={index}
+                name={field.key}
+                value={formFields[field.key]}
+                placeholder={field.placeholder}
+                type="text"
+                onChange={onInputChange} />
+                // check validity?
+              )
+            ) 
         </div>
 
         <div className="PlayerSubmissionForm__submit">
