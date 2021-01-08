@@ -99,7 +99,7 @@ describe('Game', () => {
     });
 
 
-    describe.skip('Wave 2:  Showing lines of poetry', () => {
+    describe('Wave 2:  Showing lines of poetry', () => {
 
       test('you can enter a line of the poem', () => {
         const line = ['big', 'cat', 'abruptly', 'eats', 'tasty', 'dogfood'];
@@ -149,7 +149,7 @@ describe('Game', () => {
       });
     });
 
-    describe.skip('Wave 3, these test submitting a finished poem', () => {
+    describe('Wave 3, these test submitting a finished poem', () => {
       test('you can click on the "We are finished: Reveal the Poem" button', () => {
         // Arrange
         // Submit the poem

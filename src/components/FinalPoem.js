@@ -10,7 +10,7 @@ const FinalPoem = (props) => {
         <h3>Final Poem</h3>
 
         <div>
-          {
+          { props.isSubmitted &&
             props.submissions.map((submission, index) => {
               return(
                 <div key={index}> {submission} </div>
@@ -20,10 +20,11 @@ const FinalPoem = (props) => {
         </div>
 
       </section>
-
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" onClick={() => {props.revealPoem()}} className="FinalPoem__reveal-btn" />
-      </div>
+      { props.isSubmitted ||
+        <div className="FinalPoem__reveal-btn-container">
+          <input type="button" value="We are finished: Reveal the Poem" onClick={() => {props.revealPoem()}} className="FinalPoem__reveal-btn" />
+        </div>
+      }
     </div>
   );
 }

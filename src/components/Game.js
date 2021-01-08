@@ -39,11 +39,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission={submittedLines[submittedLines.length-1]}/>
-
+      { submitCheck || !submittedLines.length || <RecentSubmission submission={submittedLines[submittedLines.length-1]}/> }
+      {/* Why undefined for typeof object doesn't work */}
+      
       {/* sendSubmittedLine is name of prop as is fields */}
-
-      <PlayerSubmissionForm fields={FIELDS} sendSubmission={addSubmittedLine} index={submittedLines.length + 1}/>
+      { submitCheck || <PlayerSubmissionForm fields={FIELDS} sendSubmission={addSubmittedLine} index={submittedLines.length + 1}/> }
 
       <FinalPoem isSubmitted={submitCheck} submissions={submittedLines} revealPoem={revealPoemFunction}/>
 

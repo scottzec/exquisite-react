@@ -46,10 +46,10 @@ const PlayerSubmissionForm = (props) => {
     });
   };
 
-  // // validation example
-  // const emailValid = () => {
-  //   return formFields.email.match(/\S+@\S+/) || formFields.email === '';
-  // }
+  // validation example
+  const entryValid = (entry) => {
+    return entry;
+  }
 
   return (
     <div className="PlayerSubmissionForm">
@@ -67,8 +67,8 @@ const PlayerSubmissionForm = (props) => {
                   value={formFields[field.key]}
                   placeholder={field.placeholder}
                   type="text"
-                  onChange={onInputChange} />
-                  // check validity?
+                  onChange={onInputChange}
+                  className={entryValid(formFields[field.key]) ? 'entry' : 'blank'}  />
                 )
             } else {
               return(
