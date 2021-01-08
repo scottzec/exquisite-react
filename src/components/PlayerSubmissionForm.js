@@ -16,7 +16,7 @@ const PlayerSubmissionForm = (props) => {
 
   // event handler
   const onInputChange = (event) => {
-    console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
+    // console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newFormFields = {
       ...formFields,
     }
@@ -34,7 +34,7 @@ const PlayerSubmissionForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault(); //prevents browser from submitting form
   
-    props.sendSubmittedLine(generateFormSubmission()); // variable for the addSubmittedLine func in Game.js
+    props.sendSubmission(generateFormSubmission()); // variable for the addSubmittedLine func in Game.js
 
     setFormFields({
       adj1: '',
@@ -53,9 +53,10 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.fields.index}</h3>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
+
         <div className="PlayerSubmissionForm__poem-inputs">
           {props.fields.map((field, index) => {
             if (typeof field === 'object') {

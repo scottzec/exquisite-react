@@ -16,9 +16,10 @@ const Game = () => {
   const [submittedLines, setSubmittedLines] = useState([])
 
   const addSubmittedLine = (submittedLine) => {
-    const newLineList = [...submittedLines, submittedLine];
+    setSubmittedLines([ ...submittedLines, submittedLine])
+    // const newLineList = [...submittedLines, submittedLine];
     
-    setSubmittedLines(newLineList);
+    // setSubmittedLines(newLineList);
   }
 
   return (
@@ -33,11 +34,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission submission={submittedLines}/>
 
       {/* sendSubmittedLine is name of prop as is fields */}
 
-      <PlayerSubmissionForm fields={FIELDS} sendSubmittedLine={addSubmittedLine}/>
+      <PlayerSubmissionForm fields={FIELDS} sendSubmission={addSubmittedLine} index={submittedLines.length + 1}/>
 
       <FinalPoem />
 
