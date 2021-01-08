@@ -34,7 +34,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission={submittedLines}/>
+      <RecentSubmission submission={submittedLines[submittedLines.length-1]}/>
 
       {/* sendSubmittedLine is name of prop as is fields */}
 
