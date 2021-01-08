@@ -13,13 +13,18 @@ const Game = () => {
     }
   }).join(' ');
 
-  const [submittedLines, setSubmittedLines] = useState([])
+  const [submitCheck, setSubmitCheck] = useState(false);
+
+  const [submittedLines, setSubmittedLines] = useState([]);
 
   const addSubmittedLine = (submittedLine) => {
-    setSubmittedLines([ ...submittedLines, submittedLine])
-    // const newLineList = [...submittedLines, submittedLine];
+    const newLineList = [...submittedLines, submittedLine];
     
-    // setSubmittedLines(newLineList);
+    setSubmittedLines(newLineList);
+  }
+
+  const revealPoemFunction = () => {
+    setSubmitCheck(true);
   }
 
   return (
@@ -40,12 +45,11 @@ const Game = () => {
 
       <PlayerSubmissionForm fields={FIELDS} sendSubmission={addSubmittedLine} index={submittedLines.length + 1}/>
 
-      <FinalPoem />
+      <FinalPoem isSubmitted={submitCheck} submissions={submittedLines} revealPoem={revealPoemFunction}/>
 
     </div>
   );
 }
-
 
 const FIELDS = [
   'The',
