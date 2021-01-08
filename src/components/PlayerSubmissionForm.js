@@ -57,18 +57,26 @@ const PlayerSubmissionForm = (props) => {
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
         <div className="PlayerSubmissionForm__poem-inputs">
-          props.fields.map((field, index) =>
+          {props.fields.map((field, index) => {
+            if (typeof field === 'object') {
               return(
-              <input
-                key={index}
-                name={field.key}
-                value={formFields[field.key]}
-                placeholder={field.placeholder}
-                type="text"
-                onChange={onInputChange} />
-                // check validity?
+                <input
+                  key={index}
+                  name={field.key}
+                  value={formFields[field.key]}
+                  placeholder={field.placeholder}
+                  type="text"
+                  onChange={onInputChange} />
+                  // check validity?
+                )
+            } else {
+              return(
+                <div key={index}> {field} </div>
               )
-            ) 
+            }
+          }
+        ) 
+      }
         </div>
 
         <div className="PlayerSubmissionForm__submit">
